@@ -1,0 +1,8 @@
+'reinit'
+'set display color white'
+'c'
+'open h.ctl'
+'set lon 130 140'
+'set lat 20 30'
+'set cint 5'
+'d h'

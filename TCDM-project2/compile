@@ -1,0 +1,20 @@
+#!/bin/sh
+
+
+if [ `which ifort` ];then
+  echo Compiling with ifort 
+  ifort 01_ShallowWaterModel.f90 -o SWM.exe
+elif [ `which gfortran` ];then
+  echo Compiling with gfortran 
+  sed -i 's/RECL=NX\*NY/RECL=4*NX*NY/g' 03_output.f90
+  gfortran 01_ShallowWaterModel.f90 -o SWM.exe
+elif [`which f90` ];then
+  echo Compiling with f90 
+  echo But not sured can work.
+  sed -i 's/RECL=NX\*NY/RECL=4*NX*NY/g' 03_output.f90
+  f90 01_ShallowWaterModel.f90 -o SWM.exe
+else
+  echo Not found fortran 90 compiler.
+  exit 1
+fi
+  
